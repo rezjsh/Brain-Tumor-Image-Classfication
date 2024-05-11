@@ -6,7 +6,7 @@ FORMAT = '[%(asctime)s]: %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT)
 
 
-project_name = 'textsummarizer'
+project_name = 'brainMRI'
 
 list_of_files = [
     f"src/{project_name}/__init__.py",
