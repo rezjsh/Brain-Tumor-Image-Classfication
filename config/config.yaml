@@ -1,0 +1,7 @@
+root_dir: project_outputs
+
+data:
+  root_dir: "project_outputs/data"
+  data_url: "https://github.com/rezjsh/data/raw/main/brain_tumor_dataset.zip"
+  filepath: "project_outputs/data/raw"
+  extract_path: "project_outputs/data/extracted"
