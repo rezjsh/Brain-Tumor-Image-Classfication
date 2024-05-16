@@ -5,3 +5,20 @@ data:
   data_url: "https://github.com/rezjsh/data/raw/main/brain_tumor_dataset.zip"
   filepath: "project_outputs/data/raw"
   extract_path: "project_outputs/data/extracted"
+
+info:
+  root_dir: project_outputs/data/info
+  data_folder: project_outputs/data/extracted
+  image_quality_and_format: project_outputs/data/info/image_quality_and_format.txt
+  image_counts_path: project_outputs/data/info/image_counts.txt
+  image_metadata_path: project_outputs/data/info/image_metadata.csv
+  allowed_formats:
+    - ".jpg"
+    - ".png"
+    - ".gif"
+  image_samples_path: project_outputs/data/info/image_samples.png
+  image_stats_results_path: project_outputs/data/info/image_stats_results.txt
+  image_stats_bar_path: project_outputs/data/info/image_stats_bar.png
+  image_stats_pie_path: project_outputs/data/info/image_stats_pie.png
+  image_stats_width_distribution_path: project_outputs/data/info/image_stats_width_distribution_path.png
+  plots_path: project_outputs/data/info/plots

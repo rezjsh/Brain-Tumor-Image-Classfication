@@ -1,3 +1,4 @@
+from brainMRI.components.analyze_data import AnalyzeImageData
 from brainMRI.components.fetch_data import FetchData
 from brainMRI.constants import *
 from brainMRI.utils.helpers import load_config, create_directories
@@ -19,3 +20,19 @@ class ConfigHandler:
 
         )
         return fetch_data_config
+    
+
+    def get_analyze_image_data_config(self) -> AnalyzeImageData:
+        config = self.config['info']
+        create_directories([config.root_dir])
+        analyze_image_data_config = AnalyzeImageData(
+            data_folder=config.data_folder,
+            image_quality_and_format=config.image_quality_and_format,
+            image_counts_path=config.image_counts_path,
+            allowed_formats=config.allowed_formats,
+            image_metadata_path=config.image_metadata_path,
+            image_samples_path=config.image_samples_path,
+            image_stats_results_path=config.image_stats_results_path,
+            plots_path=config.plots_path,
+        )
+        return analyze_image_data_config
