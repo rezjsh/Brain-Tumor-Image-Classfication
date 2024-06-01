@@ -36,3 +36,8 @@ base_model:
     - 3
   weights: imagenet
   include_top: False
+
+callbacks:
+  patience: 5
+  factor: 0.1
+  min_lr: 1e-6

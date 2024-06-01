@@ -1,5 +1,7 @@
 from brainMRI.config.configuration import ConfigHandler
 from brainMRI.logging import logger
+from brainMRI.pipeline.base_model_pipeline import BaseModelPipeline
+from brainMRI.pipeline.callbacks_pipeline import CallbacksPipeline
 from brainMRI.pipeline.fetch_data_pipeline import FetchDataPipeline
 from brainMRI.pipeline.analze_data_pipeline import AnalyzeDataPipeline
 from brainMRI.pipeline.prepare_datasets_pipeline import PrepareDatasetsPipeline
@@ -10,6 +12,8 @@ pipelines = {
     "Fetch Data stage": FetchDataPipeline(config),
     "Analyze Data stage": AnalyzeDataPipeline(config),
     "Prepare Datasets stage": PrepareDatasetsPipeline(config),
+    "Base Model stage": BaseModelPipeline(config),
+    "Callbacks stage": CallbacksPipeline(config),
 }
 
 def run_pipeline(stage_name, pipeline_instance):
