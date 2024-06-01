@@ -1,8 +1,8 @@
 prepare_datasets:
   validation_split: .2
   image_size:
-    - 180
-    - 180
+    - 250
+    - 250
   batch_size: 32
   labels: inferred
   subset: both
@@ -14,10 +14,10 @@ data_augmentation:
   random_rotation: True
   random_zoom_height: True
   random_zoom_width: True
-  random_brightness: True
-  random_contrast: True
-  random_translation_height: True
-  random_translation_width: True
+  random_brightness: False
+  random_contrast: False
+  random_translation_height: False
+  random_translation_width: False
 
   random_rotation_factor: .2
   random_zoom_height_factor: .2
@@ -29,15 +29,20 @@ data_augmentation:
   random_translation_width_factor: .2
 
 base_model:
-  fine_tune_at: 100
+  fine_tune_at: 200
   input_shape:
-    - 180
-    - 180
+    - 250
+    - 250
     - 3
   weights: imagenet
   include_top: False
 
 callbacks:
-  patience: 5
+  patience: 10
   factor: 0.1
-  min_lr: 1e-6
+  min_lr: 1e-5
+
+transfer_learning:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001

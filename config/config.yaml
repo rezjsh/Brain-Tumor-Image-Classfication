@@ -36,3 +36,14 @@ base_model:
 
 callbacks:
   root_dir: project_outputs/callbacks
+
+transfer_learning:
+  root_dir: project_outputs/model
+  train_dir: /content/project_outputs/data/preprocesses_data/train_dataset
+  val_dir: /content/project_outputs/data/preprocesses_data/val_dataset
+  base_model_path: project_outputs/model/base_model.keras
+
+prediction:
+  model_path: project_outputs/model/model.keras
+  class_names_file: project_outputs/data/preprocesses_data/class_names.txt
+  image_size: 250

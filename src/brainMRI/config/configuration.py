@@ -1,10 +1,12 @@
+from brainMRI.constants import *
+from brainMRI.utils.helpers import load_config, create_directories
 from brainMRI.components.analyze_data import AnalyzeImageData
 from brainMRI.components.augmentation import DataAugmentation
 from brainMRI.components.base_model import BaseModel
+from brainMRI.components.callbacks import Callbacks
 from brainMRI.components.fetch_data import FetchData
 from brainMRI.components.prepare_datasets import PrepareDatasets
-from brainMRI.constants import *
-from brainMRI.utils.helpers import load_config, create_directories
+from brainMRI.components.transfer_learning import TransferLearning
 
 
 class ConfigHandler:
@@ -100,3 +102,35 @@ class ConfigHandler:
             data_augmentation_config = data_augmentation_config
       )
         return base_model_config
+    
+
+    def get_callbacks_config(self) -> Callbacks:
+        config = self.config.callbacks
+        params = self.params.callbacks
+        create_directories([config.root_dir])
+
+        callbacks_config = Callbacks(
+            root_dir=config.root_dir,
+            patience=params.patience,
+            factor=params.factor,
+            min_lr=params.min_lr
+        )
+        return callbacks_config
+
+
+    def get_transfer_learning_config(self) -> TransferLearning:
+        config = self.config.transfer_learning
+        params = self.params.transfer_learning
+
+        create_directories([config.root_dir])
+        transfer_learning_config = TransferLearning(
+            root_dir=config.root_dir,
+            train_dir=config.train_dir,
+            val_dir=config.val_dir,
+            base_model_path=config.base_model_path,
+            callback_path=config.callback_path,
+            epochs=params.epochs,
+            batch_size=params.batch_size,
+            learning_rate=params.learning_rate
+        )
+        return transfer_learning_config
