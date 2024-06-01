@@ -26,3 +26,6 @@ info:
 prepare_datasets:
   data_dir: project_outputs/data/extracted
   save_dir: project_outputs/data/preprocesses_data
+
+data_augmentation:
+  training_dir: project_outputs/data/preprocesses_data/train_dataset

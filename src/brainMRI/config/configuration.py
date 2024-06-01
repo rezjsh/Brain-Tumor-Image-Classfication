@@ -1,4 +1,6 @@
 from brainMRI.components.analyze_data import AnalyzeImageData
+from brainMRI.components.augmentation import DataAugmentation
+from brainMRI.components.base_model import BaseModel
 from brainMRI.components.fetch_data import FetchData
 from brainMRI.components.prepare_datasets import PrepareDatasets
 from brainMRI.constants import *
@@ -58,3 +60,29 @@ class ConfigHandler:
         )
 
         return prepare_datasets_config
+    
+    def get_data_augmentation_config(self) -> DataAugmentation:
+        params = self.params.data_augmentation
+        config = self.config.data_augmentation
+        data_augmentation_config = DataAugmentation(
+            training_dir= config.training_dir,
+            random_flip_horizontal= params.random_flip_horizontal,
+            random_flip_vertical= params.random_flip_vertical,
+            random_rotation= params.random_rotation,
+            random_zoom_height= params.random_zoom_height,
+            random_zoom_width= params.random_zoom_width,
+            random_brightness= params.random_brightness,
+            random_contrast= params.random_contrast,
+            random_translation_height= params.random_translation_height,
+            random_translation_width= params.random_translation_width,
+            random_rotation_factor= params.random_rotation_factor,
+            random_zoom_height_factor= params.random_zoom_height_factor,
+            random_zoom_width_factor= params.random_zoom_width_factor,
+            random_brightness_factor= params.random_brightness_factor,
+            random_contrast_lower_factor= params.random_contrast_lower_factor,
+            random_contrast_upper_factor= params.random_contrast_upper_factor,
+            random_translation_height_factor= params.random_translation_height_factor,
+            random_translation_width_factor= params.random_translation_width_factor
+        )
+        return data_augmentation_config
+    

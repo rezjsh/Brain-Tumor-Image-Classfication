@@ -7,3 +7,23 @@ prepare_datasets:
   labels: inferred
   subset: both
   seed: 123
+
+data_augmentation:
+  random_flip_horizontal: True
+  random_flip_vertical: False
+  random_rotation: True
+  random_zoom_height: True
+  random_zoom_width: True
+  random_brightness: True
+  random_contrast: True
+  random_translation_height: True
+  random_translation_width: True
+
+  random_rotation_factor: .2
+  random_zoom_height_factor: .2
+  random_zoom_width_factor: 0
+  random_brightness_factor: .2
+  random_contrast_lower_factor: .8
+  random_contrast_upper_factor: 1.2
+  random_translation_height_factor: .2
+  random_translation_width_factor: .2
