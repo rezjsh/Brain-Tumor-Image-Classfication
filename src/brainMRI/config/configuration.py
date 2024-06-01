@@ -86,3 +86,17 @@ class ConfigHandler:
         )
         return data_augmentation_config
     
+    def get_base_model_config(self) -> BaseModel:
+        config = self.config.base_model
+        params= self.params.base_model
+        data_augmentation_config = self.get_data_augmentation_config()
+
+        base_model_config = BaseModel(
+            root_dir = config.root_dir,
+            weights=params.weights,
+            include_top=params.include_top,
+            input_shape=params.input_shape,
+            fine_tune_at=params.fine_tune_at,
+            data_augmentation_config = data_augmentation_config
+      )
+        return base_model_config

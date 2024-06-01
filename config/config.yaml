@@ -29,3 +29,7 @@ prepare_datasets:
 
 data_augmentation:
   training_dir: project_outputs/data/preprocesses_data/train_dataset
+
+base_model:
+  root_dir: project_outputs/model
+  use_augmentation: True

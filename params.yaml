@@ -27,3 +27,12 @@ data_augmentation:
   random_contrast_upper_factor: 1.2
   random_translation_height_factor: .2
   random_translation_width_factor: .2
+
+base_model:
+  fine_tune_at: 100
+  input_shape:
+    - 180
+    - 180
+    - 3
+  weights: imagenet
+  include_top: False
