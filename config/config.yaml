@@ -22,3 +22,7 @@ info:
   image_stats_pie_path: project_outputs/data/info/image_stats_pie.png
   image_stats_width_distribution_path: project_outputs/data/info/image_stats_width_distribution_path.png
   plots_path: project_outputs/data/info/plots
+
+prepare_datasets:
+  data_dir: project_outputs/data/extracted
+  save_dir: project_outputs/data/preprocesses_data

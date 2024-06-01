@@ -1,5 +1,6 @@
 from brainMRI.components.analyze_data import AnalyzeImageData
 from brainMRI.components.fetch_data import FetchData
+from brainMRI.components.prepare_datasets import PrepareDatasets
 from brainMRI.constants import *
 from brainMRI.utils.helpers import load_config, create_directories
 
@@ -7,6 +8,7 @@ from brainMRI.utils.helpers import load_config, create_directories
 class ConfigHandler:
     def __init__(self, file_path=CONFIG_FILE_PATH, params_path = PARAMS_FILE_PATH):
         self.config = load_config(file_path)
+        self.params = load_config(params_path)
         create_directories([self.config.root_dir])
 
     
@@ -23,7 +25,7 @@ class ConfigHandler:
     
 
     def get_analyze_image_data_config(self) -> AnalyzeImageData:
-        config = self.config['info']
+        config = self.config.info
         create_directories([config.root_dir])
         analyze_image_data_config = AnalyzeImageData(
             data_folder=config.data_folder,
@@ -36,3 +38,23 @@ class ConfigHandler:
             plots_path=config.plots_path,
         )
         return analyze_image_data_config
+
+
+    
+    def get_prepare_datasets_config(self) -> PrepareDatasets:
+        config = self.config.prepare_datasets
+        params = self.params.prepare_datasets
+        create_directories([config.save_dir])
+        
+        prepare_datasets_config = PrepareDatasets(
+            data_dir= config.data_dir,
+            save_dir= config.save_dir,
+            validation_split= params.validation_split,
+            image_size= params.image_size,
+            batch_size= params.batch_size,
+            labels= params.labels,
+            subset= params.subset,
+            seed= params.seed
+        )
+
+        return prepare_datasets_config
