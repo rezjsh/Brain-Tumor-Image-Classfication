@@ -14,7 +14,7 @@ class PrepareDatasetsPipeline:
 if __name__ == '__main__':
     try:
         config = ConfigHandler()
-        stage_name = 'Fetch Data stage'
+        stage_name = 'Prepare Datasets stage'
         logger.info(f">>>>>> stage {stage_name} started <<<<<<")  # Log the start of the pipeline stage
         pipeline = PrepareDatasetsPipeline(config)
         pipeline.main()
